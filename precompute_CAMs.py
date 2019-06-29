@@ -17,12 +17,11 @@ num_runs = 5
 stats_all = np.load('custom_3d_stats_all_glaucoma_noAugmentation.npy').item()
 
 #for train_set in train_sets:
-num_epochs = 60
 train_set = 4
 #    for test_set in test_sets:
 #        [test_fix_pos, epoch-1, run_num,train_fix_pos,noise_ind, contrast_ind]
-current_mean = np.mean(stats_all['perform']['test'][:,:,train_set][:,0:num_epochs], 1)
-current_std = np.std(stats_all['perform']['test'][:,:,train_set][:,0:num_epochs], 1)/np.sqrt(num_epochs)
+current_mean = np.mean(stats_all['perform']['test'][:,:,train_set][:,:-1], 1)
+current_std = np.std(stats_all['perform']['test'][:,:,train_set][:,:-1], 1)
 
 max_ind = np.argmax(current_mean)
 end_ind = int(np.argwhere(np.isnan(stats_all['preds']['test'][max_ind, 0, train_set,:]))[0])-1

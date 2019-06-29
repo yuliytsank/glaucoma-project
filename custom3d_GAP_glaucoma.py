@@ -9,12 +9,12 @@ class Glaucoma3d(nn.Module):
         self.conv_layer2 = self.conv_layer_operations(32, 32, 2, 5, 5, 1)
         self.conv_layer3 = self.conv_layer_operations(32, 32, 2, 3, 3, 1)
         self.conv_layer4 = self.conv_layer_operations(32, 32, 2, 3, 3, 1)
-        self.avgpool = nn.AdaptiveAvgPool3d((1, 1, 1))
-        self.fc = nn.Linear(32, num_classes)
+        self.avgpool = nn.AdaptiveAvgPool3d((1, 1, 1))# global average pooling layer useful for extracting class activation maps (CAMs) 
+        self.fc = nn.Linear(32, num_classes)#single fully connected layer necessary to extract CAMs
 
     def conv_layer_operations(self, in_c, out_c, k1, k2, k3,s):
         conv_layer = nn.Sequential(
-        nn.Conv3d(in_c, out_c, kernel_size=(k1, k2, k3), stride=s),
+        nn.Conv3d(in_c, out_c, kernel_size=(k1, k2, k3), stride=s), #3d convolution with a kernel (k)size values for each dimension
         nn.ReLU(),
         nn.BatchNorm3d(out_c)
         )
