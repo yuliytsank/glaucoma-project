@@ -1,6 +1,6 @@
-# Glaucoma Automation Project
+# Glaucoma Detection Automation Project Using a 3D CNN
 
-This was a project done at Insight Data Science in the summer of 2019 as a proof of concept of automated glaucoma detection in developing world regions from low-resolution Ocular Coherence Tomography (OCT) images. 
+This was a project done at Insight Data Science in the summer of 2019 as a proof of concept of automated glaucoma detection in developing world regions from low-resolution Ocular Coherence Tomography (OCT) images. See www.glaucomaproject.xyz for a web app that I built that takes a low-resolution OCT volume as an input, and outputs a glaucoma probability score using a trained 3D CNN model. 
 
 OCT volume reference:  
 <img src="/Images/Reference/OCT_vol_reference.png" height="70%" width="70%">
