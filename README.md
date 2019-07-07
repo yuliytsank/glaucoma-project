@@ -8,6 +8,7 @@ OCT volume reference:
 ## Requirements
 
 -"requirements.txt" contains a long list of packages in the conda environment I was using with Python 2.7
+
 -the main ones needed for this part of the project were pytorch, torchvision, scikit-learn 
 
 ## Training and Testing
@@ -38,9 +39,10 @@ This script also validates each training run on every other epoch and records th
 ## Network Details
 
 -the network I built was based off of the one in this medical imaging paper: https://arxiv.org/abs/1807.04855
+
 -the image below shows the original network at the top and my customization below it in order to fit low-resolution data to simulate the output of a less expensive OCT scanner
 
-<img src="/Images/Reference/NetworkArchitecture.png" height="70%" width="70%">
+<img src="/Images/Reference/NetworkArchitecture.png" height="7=100%" width="100%">
 
 ## Performance Analysis
 
