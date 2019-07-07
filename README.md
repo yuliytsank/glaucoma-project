@@ -60,7 +60,7 @@ Receiver Operating Characteristic (ROC) Curve When Using Full Training Set for O
 
 ## Script for Plotting Performance Analysis
 
-- "extract_max_pcs_glaucoma.py" in the "utils" directory is used for plotting the performance curves above
+- "analyze_performance.py" in the "utils" directory is used for plotting the performance curves above
 
 ## Script for Computing Class Activation Maps (CAMs)
 
