@@ -1,9 +1,5 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
-
-selected_layers = [3]
-gap_layer = 5
-selected_filter = 5
 import os
 import torch
 import torch.nn as nn
@@ -12,6 +8,8 @@ from scipy.ndimage import zoom
 from torch.autograd import Variable
 import numpy as np
 
+selected_layers = [3]
+gap_layer = 5
 softmax = nn.Softmax()
 batch_size = 1
 
@@ -32,21 +30,14 @@ new_dims = (map_depth, map_width, map_width)
 
 run_num = 0
 
-max_ind_epochs = np.array([[46., 0],
-       [0, 0],
-       [0, 0]])
+max_ind_epochs = np.array([46])
 max_ind_epochs = max_ind_epochs.astype(np.uint8)
-
-inverted_prop_num = 0
 
 trainSet_sizes = ['all']
 
 def getCAM(np_contents, sample_num=0):
-    
-   
+       
     for trainSet_size_num, trainSet_size in enumerate(trainSet_sizes):
-        
-    #    weighted_classes['train_fix'+str(train_fix_num)] = {}
     
         for test_set_num in range(0,1):
             
@@ -64,23 +55,18 @@ def getCAM(np_contents, sample_num=0):
                     device = torch.device('cpu') 
             
                 path_saved_model =os.path.join('.', 'model_glaucoma_'+ trainSet_size +'_epoch_'+str(max_ind_epochs[trainSet_size_num, test_set_num])+'_run_' +str(run_num))
-                
-                
-                
+                  
                 state_dict = torch.load(path_saved_model,map_location=device)
 
                 model.load_state_dict(state_dict)
-                
-                
+             
                 model.features = nn.Sequential(*list(model.children())[:-2])
                 model.eval()
          
                 test_batch = 0
-                
-    #            num_test_samples = len(test_loader)
+
                 num_test_samples = 1
-    
-                
+
                 weighted_classes_summed = {}
                 weighted_classes = {}
                 
@@ -91,16 +77,13 @@ def getCAM(np_contents, sample_num=0):
                 targets = np.empty(num_test_samples)*np.nan
                 preds = np.empty(num_test_samples)*np.nan
                 probs = np.empty(num_test_samples)*np.nan
-                
-                
-
+ 
                 target_idx = 0
                 target = 1#find probability of glaucoma
                 np_data = np_contents
                 data = torch.from_numpy(np_data[None,None,:,:,:]).float()
                 print('SampleNum: '+str(sample_num) +'/'+str(num_test_samples))
-            
-                
+  
                 targets[target_idx] = target
                 
                 test_batch+=1
@@ -116,11 +99,9 @@ def getCAM(np_contents, sample_num=0):
 
                 params = list(model.parameters())[16]
                 weights_np = params.clone().cpu().detach().numpy()
-                    
-                    
+
                 x = data[:,:,:,:,:]
             #    chan_depth = x.shape[1]
-                
                 for index, layer in enumerate(model.features):
                     # Forward pass layer by layer
                     x = layer(x)
@@ -174,6 +155,6 @@ def getCAM(np_contents, sample_num=0):
                         CAM_slices_overlaid[slice_view]['slice'+str(slice_num)]= current_slice_CAM_overlaid.astype(np.uint8)
                         
     return CAM_slices_overlaid, original_slices, probs
-                    
+      
                     
   

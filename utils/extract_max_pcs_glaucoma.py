@@ -1,4 +1,3 @@
-
 import numpy as np
 from sklearn import metrics
 
@@ -74,13 +73,13 @@ for train_setSize in range(0,num_trainSetSizes):
         
         if (train_setSize == (num_trainSetSizes-1)):
             for epoch_num in range(0,num_epochs,2):
-                    auc_scores_curve_train[cv_fold, epoch_num] = stats_all['auc']['train'][epoch_num, cv_fold, train_setSize]
-                    auc_scores_curve_val[cv_fold, epoch_num] = stats_all['auc']['val'][epoch_num, cv_fold, train_setSize]
-                    auc_scores_curve_test[cv_fold, epoch_num] = stats_all['auc']['test'][epoch_num, cv_fold, train_setSize]
-                    
-                    losses_curve_train[cv_fold, epoch_num] = stats_all['losses']['train'][epoch_num, cv_fold, train_setSize]
-                    losses_curve_val[cv_fold, epoch_num] = stats_all['losses']['val'][epoch_num, cv_fold, train_setSize]
-                    losses_curve_test[cv_fold, epoch_num] = stats_all['losses']['test'][epoch_num, cv_fold, train_setSize]
+                auc_scores_curve_train[cv_fold, epoch_num] = stats_all['auc']['train'][epoch_num, cv_fold, train_setSize]
+                auc_scores_curve_val[cv_fold, epoch_num] = stats_all['auc']['val'][epoch_num, cv_fold, train_setSize]
+                auc_scores_curve_test[cv_fold, epoch_num] = stats_all['auc']['test'][epoch_num, cv_fold, train_setSize]
+                
+                losses_curve_train[cv_fold, epoch_num] = stats_all['losses']['train'][epoch_num, cv_fold, train_setSize]
+                losses_curve_val[cv_fold, epoch_num] = stats_all['losses']['val'][epoch_num, cv_fold, train_setSize]
+                losses_curve_test[cv_fold, epoch_num] = stats_all['losses']['test'][epoch_num, cv_fold, train_setSize]
         
         if (cv_fold ==0)&(train_setSize == (num_trainSetSizes-1)):
             plt.figure()
