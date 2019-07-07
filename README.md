@@ -1,13 +1,14 @@
-# glaucoma-project
+# Glaucoma Automation Project
 
-This was project done at Insight Data Science in the summer of 2019 as a proof of concept of automated glaucoma detection from low- resolution Ocular Coherence Tomography (OCT) images. 
+This was a project done at Insight Data Science in the summer of 2019 as a proof of concept of automated glaucoma detection in developing world regions from low-resolution Ocular Coherence Tomography (OCT) images. 
 
 OCT volume reference:  
 <img src="/Images/Reference/OCT_vol_reference.png" height="70%" width="70%">
 
 ## Requirements
 
-- 
+-"requirements.txt" contains a long list of packages in the conda environment I was using with Python 2.7
+-the main ones needed for this part of the project were pytorch, torchvision, scikit-learn 
 
 ## Training and Testing
 ```
@@ -36,7 +37,10 @@ This script also validates each training run on every other epoch and records th
 
 ## Network Details
 
-- 
+-the network I built was based off of the one in this medical imaging paper: https://arxiv.org/abs/1807.04855
+-the image below shows the original network at the top and my customization below it in order to fit low-resolution data to simulate the output of a less expensive OCT scanner
+
+<img src="/Images/Reference/NetworkArchitecture.png" height="70%" width="70%">
 
 ## Performance Analysis
 
@@ -61,5 +65,8 @@ Receiver Operating Characteristic (ROC) Curve When Using Full Training Set for O
 - "precompute_CAMs.py" calls "visualize_slice_CAM_glaucoma3d.py" to compute CAMs for 3 enface slices and 3 cross-section slices of the volume (see OCT reference image at the top for a visuzalization of where these slices come from) for all samples when they were part of the validation set in each cross-validation fold
 
 - see www.glaucomaproject.xyz for a web app that I built with examples of CAM outputs for different diagnostic cases
+
+Examples of CAMs:  
+<img src="/Images/Reference/WebApp_CAMs.png" height="70%" width="70%">
 
 - see http://cnnlocalization.csail.mit.edu/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf for the paper that first introduced CAMs
