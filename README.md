@@ -38,6 +38,8 @@ This script also validates each training run on every other epoch and records th
 
 ## Network Details
 
+- the network architecture is contained in 'utils/custom3d_GAP_glaucoma.py'
+
 -the network I built was based off of the one in this medical imaging paper: https://arxiv.org/abs/1807.04855
 
 -the image below shows the original network at the top and my customization below it in order to fit low-resolution data to simulate the output of a less expensive OCT scanner
